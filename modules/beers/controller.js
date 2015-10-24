@@ -51,7 +51,7 @@ var Controller = {
 		
 		var mod = req.body;
 
-		Model.update(query,mod,optional,function(err,data){
+		Model.update(query,mod,function(err,data){
 			if(err){
 				console.log('Erro',err);
 				msg = err; 

@@ -16,7 +16,7 @@ router.put('/:id', function(req, res, next) {
   Controller.update(req,res);	
   });
 
-router.put('/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   Controller.get(req,res);	
   });
 
