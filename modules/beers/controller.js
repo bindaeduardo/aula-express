@@ -3,7 +3,7 @@ var Model = require('./model');
 var Controller = {
   	create:function (req,res){
   		console.log('create');
-       var dados = { name: 'Skol', desciption: 'opa', alchool:9.0, price:90.0,category:'pilsen'};
+       var dados = req.body;
 	   var model = new Model(dados); 
 	   var msg = '';
 
@@ -32,19 +32,24 @@ var Controller = {
 		res.json(msg);
 	});
   	},
+  	get:function (req,res){
+  		var query = {_id:req.params.id};
+		Model.findOne(query, function(err, data) { 
+		if (err) { 
+		    console.log('Erro:' , err );
+		    msg = err; 
+		} else {
+			console.log('Listagem:', data); 
+			msg = data;
+		}		
+		res.json(msg);
+	});
+  	},
   	update:function (req,res){
 		 
-        var query = {name: /skol/i};
+        var query = {_id:req.params.id};
 		
-		var mod = {
-			name:'Brahma',
-			description:'Masomenote'
-		};
-
-		var optional = {
-			upsert:false,
-			multi:true
-		};
+		var mod = req.body;
 
 		Model.update(query,mod,optional,function(err,data){
 			if(err){
