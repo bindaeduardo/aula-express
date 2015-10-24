@@ -20,4 +20,8 @@ router.get('/:id', function(req, res, next) {
   Controller.get(req,res);	
   });
 
+router.delete('/:id', function(req, res, next) {
+  Controller.delete(req,res);	
+  });
+
 module.exports = router;
